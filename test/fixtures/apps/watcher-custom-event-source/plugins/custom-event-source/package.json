@@ -1,0 +1,9 @@
+{
+  "name": "custom-event-source",
+  "eggPlugin": {
+    "name": "custom-event-source",
+    "dep": [
+      "watcher"
+    ]
+  }
+}
