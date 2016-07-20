@@ -21,8 +21,8 @@ module.exports = function(agent) {
     const EventSource = require('./lib/event-sources/' + type);
     agent.watcher.useEventSource(new EventSource(agent));
   } catch (e) {
-    throw new Error(`useEventSource error, please make sure that the
-                    related event source type(${type}) is implemented, ${e.stack}`);
+    // event source of type should be implemented
+    // won't throw error any way, allow other plugin implement.
   }
 
   agent.startAgent({

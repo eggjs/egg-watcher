@@ -24,9 +24,11 @@
     "wt": "~1.1.0"
   },
   "devDependencies": {
-    "autod": "^2.6.1",
-    "egg-bin": "^1.0.2",
-    "egg-ci": "^1.0.2",
+    "autod": "2",
+    "egg": "*",
+    "egg-bin": "1",
+    "egg-ci": "1",
+    "egg-mock": "*",
     "eslint": "3",
     "eslint-config-egg": "3",
     "should": "^9.0.2",

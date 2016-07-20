@@ -1,5 +1,5 @@
 # egg-watcher
-Watcher plugin for egg
+File watcher plugin for egg
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
