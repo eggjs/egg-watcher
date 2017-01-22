@@ -6,7 +6,6 @@ class CustomEventSource extends Base {
 
   constructor(/* agent */) {
     super();
-
     this.ready(true);
   }
 

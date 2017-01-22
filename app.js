@@ -1,34 +1,18 @@
 'use strict';
 
-module.exports = function(app) {
-  app.watcher = app.createAppWorkerClient('watcher', {
+const Watcher = require('./lib/watcher');
 
-    watch(path, listener) {
-      if (!path) return;
+module.exports = app => {
+  const logger = app.coreLogger;
+  const config = app.config.watcher;
 
-      if (Array.isArray(path)) {
-        path.forEach(function(p) {
-          this.watch(p, listener);
-        }, this);
-        return;
-      }
+  const watcher = app.watcher = app.cluster(Watcher)
+      .delegate('watch', 'subscribe')
+      .create(config)
+      .on('error', e => logger.error(e));
 
-      this._subscribe(path, listener);
-      return;
-    },
-
-    unwatch(path, listener) {
-      if (!path) return;
-
-      if (Array.isArray(path)) {
-        path.forEach(function(p) {
-          this.unwatch(p, listener);
-        }, this);
-        return;
-      }
-
-      this._unSubscribe(path, listener);
-    },
-
-  }, app.config.watcher);
+  app.beforeStart(function* () {
+    yield watcher.ready();
+    logger.info('[egg-watcher:app] watcher start success');
+  });
 };
