@@ -4,7 +4,7 @@ const Base = require('sdk-base');
 
 class CustomEventSource extends Base {
 
-  constructor(/* agent */) {
+  constructor(/* options */) {
     super();
     this.ready(true);
   }
