@@ -51,13 +51,69 @@ Stop watching file(s).
 - path(String|Array): file path(s)
 - listener(Function): file change callback
 
-## watch mode
+## Watching mode
 
-[development mode](https://github.com/eggjs/egg-watcher/blob/master/lib/event-sources/development.js) is included.
+### `development` Mode
 
-### development Mode
+There's a built-in [development mode](https://github.com/eggjs/egg-watcher/blob/master/lib/event-sources/development.js) which works in local(env is `local`). Once files on disk is modified it will emit a `change` event immediately.
 
-When your app is running at local(env is `local`), it will be in `development mode`. Once local file is modified it will emit `change` event immediately.
+### Customize Watching Mode
+
+Firstly define your custom event source like this:
+
+```js
+// custom_event_source.js
+const Base = require('sdk-base');
+class CustomEventSource extends Base {
+  constructor(opts) {
+    super(opts);
+    this.ready(true);
+  }
+
+  watch(path) {
+    // replace this with your desired way of watching,
+    // when aware of any change, emit a `change` event
+    this._h = setInterval(() => {
+      this.emit('change', {
+        path,
+      });
+    }, 1000);
+  }
+
+  unwatch() {
+    // replace this with your implementation
+    if (this._h) {
+      clearInterval(this._h);
+    }
+  }
+}
+
+module.exports = CustomEventSource;
+```
+
+Event source implementations varies according to your running environment. When working with vagrant, docker, samba or such other non-standard way of development, you should use a different watch API specific to what you are working with.
+
+Then add your custom event source to config:
+
+```js
+// config.default.js
+exports.watcher = {
+  eventSources: {
+    custom: require('../custom'),
+  },
+};
+```
+
+Choose to use your custom watching mode in your desired env.
+
+```js
+// config.${env}.js
+exports.watcher = {
+  type: 'custom',
+};
+```
+
+If possible, plugins named like `egg-watcher-${customName}`(`egg-watcher-vagrant` eg.) are welcomed.
 
 ## Questions & Suggestions
 
