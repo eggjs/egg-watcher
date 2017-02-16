@@ -73,7 +73,8 @@ class CustomEventSource extends Base {
   watch(path) {
     // replace this with your desired way of watching,
     // when aware of any change, emit a `change` event
-    // with an info object containing `change` property.
+    // with an info object containing `path` property
+    // specifying the changed directory or file.
     this._h = setInterval(() => {
       this.emit('change', { path });
     }, 1000);
