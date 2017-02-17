@@ -59,12 +59,17 @@ There's a built-in [development mode](https://github.com/eggjs/egg-watcher/blob/
 
 ### Customize Watching Mode
 
-Firstly define your custom event source like this:
+Say we want to build a custom event source plugin (package name: `egg-watcher-custom`, eggPlugin.name: `watcherCustom`).
+
+Firstly define our custom event source like this:
 
 ```js
-// custom_event_source.js
+// {plugin_root}/lib/custom_event_source.js
 const Base = require('sdk-base');
 class CustomEventSource extends Base {
+  // `opts` comes from app.config[${eventSourceName}]
+  // `eventSourceName` will be registered later in
+  // `config.watcher.eventSources` as the key shown below
   constructor(opts) {
     super(opts);
     this.ready(true);
@@ -99,7 +104,7 @@ Then add your custom event source to config:
 // config.default.js
 exports.watcher = {
   eventSources: {
-    custom: require('../custom'),
+    custom: require('../lib/custom_event_source'),
   },
 };
 ```
@@ -111,9 +116,14 @@ Choose to use your custom watching mode in your desired env.
 exports.watcher = {
   type: 'custom',
 };
+
+// this will pass to your CustomEventSource constructor as opts
+exports.watcherCustom = {
+  // foo: 'bar',
+};
 ```
 
-If possible, plugins named like `egg-watcher-${customName}`(`egg-watcher-vagrant` eg.) are welcomed.
+If possible, plugins named like `egg-watcher-${customName}`(`egg-watcher-vagrant` eg.) are recommended.
 
 ## Questions & Suggestions
 
