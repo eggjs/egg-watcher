@@ -104,7 +104,7 @@ Then add your custom event source to config:
 // config.default.js
 exports.watcher = {
   eventSources: {
-    custom: require('../custom'),
+    custom: require('../lib/custom_event_source'),
   },
 };
 ```
