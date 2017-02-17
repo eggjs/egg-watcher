@@ -32,6 +32,10 @@ describe('test/watcher.test.js', () => {
 
         // ensure use config.custom
         assert(info.foo === 'bar');
+
+        const content = fs.readFileSync(__dirname + '/fixtures/apps/watcher-custom-event-source/logs/watcher-custom-event-source/egg-agent.log', 'utf8');
+        assert(content.includes('warn12345'));
+        assert(content.includes('info12345'));
         /*
         // TODO wait unsubscribe implementaion in cluster-client
         co(function* () {

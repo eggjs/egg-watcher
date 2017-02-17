@@ -11,6 +11,8 @@ class CustomEventSource extends Base {
   }
 
   watch(path) {
+    this.emit('info', 'info12345');
+    this.emit('warn', 'warn12345');
     this._h = setInterval(() => {
       this.emit('change', {
         path,
