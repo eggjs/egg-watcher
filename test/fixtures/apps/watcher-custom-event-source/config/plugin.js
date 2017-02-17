@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-exports['custom-event-source'] = {
+exports.watcherCustom = {
   enable: true,
-  path: path.join(__dirname, '../plugins/custom-event-source'),
+  path: path.join(__dirname, '../plugins/egg-watcher-custom'),
 };

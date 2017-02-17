@@ -4,7 +4,7 @@ exports.watcher = {
   type: 'custom',
 };
 
-exports.custom = {
+exports.watcherCustom = {
   foo: 'bar',
 };
 

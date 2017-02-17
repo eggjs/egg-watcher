@@ -59,7 +59,9 @@ There's a built-in [development mode](https://github.com/eggjs/egg-watcher/blob/
 
 ### Customize Watching Mode
 
-Firstly define your custom event source like this:
+Say we want to build a custom event source plugin (package name: `egg-watcher-custom`, pluginName: `watcherCustom`).
+
+Firstly define our custom event source like this:
 
 ```js
 // custom_event_source.js
@@ -116,7 +118,7 @@ exports.watcher = {
 };
 
 // this will pass to your CustomEventSource constructor as opts
-exports.custom = {
+exports.watcherCustom = {
   // foo: 'bar',
 };
 ```
