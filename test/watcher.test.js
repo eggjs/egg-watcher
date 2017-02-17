@@ -11,16 +11,14 @@ describe('test/watcher.test.js', () => {
     app && app.close();
   });
 
-  it('should warn user if config.watcher.type is default', done => {
+  it('should warn user if config.watcher.type is default', function* () {
     app = mm.cluster({
       plugin: 'watcher',
       baseDir: 'apps/watcher-type-default',
     });
-    app.ready(() => {
-      const content = fs.readFileSync(__dirname + '/fixtures/apps/watcher-type-default/logs/watcher-type-default/egg-agent.log').toString();
-      assert(content.includes('defaultEventSource watcher will NOT take effect'));
-      done();
-    });
+    yield app.ready();
+    const content = fs.readFileSync(__dirname + '/fixtures/apps/watcher-type-default/logs/watcher-type-default/egg-agent.log', 'utf8');
+    assert(content.includes('defaultEventSource watcher will NOT take effect'));
   });
 
   it('should work if config.watcher.type is custom', done => {
@@ -31,6 +29,9 @@ describe('test/watcher.test.js', () => {
     app.ready(() => {
       app.watcher.watch('xxxx', info => {
         assert(info.path === 'xxxx');
+
+        // ensure use config.custom
+        assert(info.foo === 'bar');
         /*
         // TODO wait unsubscribe implementaion in cluster-client
         co(function* () {

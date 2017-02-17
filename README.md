@@ -65,6 +65,9 @@ Firstly define your custom event source like this:
 // custom_event_source.js
 const Base = require('sdk-base');
 class CustomEventSource extends Base {
+  // `opts` comes from app.config[${eventSourceName}]
+  // `eventSourceName` will be registered later in
+  // `config.watcher.eventSources` as the key shown below
   constructor(opts) {
     super(opts);
     this.ready(true);
@@ -110,6 +113,11 @@ Choose to use your custom watching mode in your desired env.
 // config.${env}.js
 exports.watcher = {
   type: 'custom',
+};
+
+// this will pass to your CustomEventSource constructor as opts
+exports.custom = {
+  // foo: 'bar',
 };
 ```
 

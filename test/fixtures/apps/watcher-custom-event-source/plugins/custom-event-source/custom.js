@@ -4,8 +4,9 @@ const Base = require('sdk-base');
 
 class CustomEventSource extends Base {
 
-  constructor(/* options */) {
+  constructor(options) {
     super();
+    this._options = options;
     this.ready(true);
   }
 
@@ -13,6 +14,7 @@ class CustomEventSource extends Base {
     this._h = setInterval(() => {
       this.emit('change', {
         path,
+        foo: this._options.foo,
       });
     }, 1000);
   }
