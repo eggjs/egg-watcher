@@ -8,3 +8,5 @@ exports.watcherCustom = {
   foo: 'bar',
 };
 
+exports.keys = 'testkey';
+
