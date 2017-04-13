@@ -1,4 +1,10 @@
 
+2.1.1 / 2017-04-13
+==================
+
+  * fix: should support watch one file multiple times (#6)
+  * test: add config.keys to fix tests (#5)
+
 2.1.0 / 2017-02-17
 ==================
 
