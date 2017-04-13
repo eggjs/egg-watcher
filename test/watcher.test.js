@@ -3,6 +3,7 @@
 const fs = require('fs');
 const mm = require('egg-mock');
 const assert = require('assert');
+const pedding = require('pedding');
 
 describe('test/watcher.test.js', () => {
   let app;
@@ -22,6 +23,7 @@ describe('test/watcher.test.js', () => {
   });
 
   it('should work if config.watcher.type is custom', done => {
+    done = pedding(done, 2);
     app = mm.app({
       plugin: 'watcher',
       baseDir: 'apps/watcher-custom-event-source',
@@ -44,6 +46,12 @@ describe('test/watcher.test.js', () => {
         .then(done)
         .catch(e => done(e));
         */
+        done();
+      });
+
+      app.watcher.watch('xxxx', info => {
+        // watch again success
+        assert(info.path === 'xxxx');
         done();
       });
     });
