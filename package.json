@@ -19,22 +19,21 @@
     "autod": "autod"
   },
   "dependencies": {
-    "camelcase": "^4.0.0",
-    "detect-port": "^1.1.0",
-    "sdk-base": "^3.0.1",
+    "camelcase": "^4.1.0",
+    "sdk-base": "^3.1.1",
     "wt": "^1.1.1"
   },
   "devDependencies": {
-    "autod": "^2.7.1",
-    "egg": "*",
-    "egg-bin": "^2.0.1",
-    "egg-ci": "^1.1.0",
-    "egg-mock": "^2.1.0",
-    "eslint": "^3.14.0",
+    "autod": "^2.8.0",
+    "egg": "^1.2.0",
+    "egg-bin": "^3.3.2",
+    "egg-ci": "^1.6.0",
+    "egg-mock": "^3.5.0",
+    "eslint": "^3.19.0",
     "eslint-config-egg": "^3.2.0",
     "ko-sleep": "^1.0.2",
     "pedding": "^1.1.0",
-    "supertest": "^2.0.1"
+    "supertest": "^3.0.0"
   },
   "homepage": "https://github.com/eggjs/egg-watcher",
   "repository": {
