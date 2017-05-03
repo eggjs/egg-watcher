@@ -8,9 +8,7 @@ const pedding = require('pedding');
 describe('test/watcher.test.js', () => {
   let app;
 
-  afterEach(() => {
-    app && app.close();
-  });
+  afterEach(() => app && app.close());
 
   it('should warn user if config.watcher.type is default', function* () {
     app = mm.cluster({
