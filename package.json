@@ -1,6 +1,6 @@
 {
   "name": "egg-watcher",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "file watcher plugin for egg",
   "eggPlugin": {
     "name": "watcher"
