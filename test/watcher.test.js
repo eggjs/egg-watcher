@@ -11,7 +11,7 @@ describe('test/watcher.test.js', () => {
   afterEach(() => app && app.close());
 
   it('should warn user if config.watcher.type is default', function* () {
-    app = mm.cluster({
+    app = mm.app({
       plugin: 'watcher',
       baseDir: 'apps/watcher-type-default',
     });
@@ -50,6 +50,26 @@ describe('test/watcher.test.js', () => {
       app.watcher.watch('xxxx', info => {
         // watch again success
         assert(info.path === 'xxxx');
+        done();
+      });
+    });
+  });
+
+  it('should work if config.watcher.type is custom(fuzzy)', done => {
+    app = mm.app({
+      plugin: 'watcher',
+      baseDir: 'apps/watcher-custom-event-source-fuzzy',
+    });
+    app.ready(() => {
+      app.watcher.watch([ '/home/admin/xxx' ], info => {
+        assert(info.path === '/home/admin');
+
+        // ensure use config.custom
+        assert(info.foo === 'bar');
+
+        const content = fs.readFileSync(__dirname + '/fixtures/apps/watcher-custom-event-source-fuzzy/logs/watcher-custom-event-source-fuzzy/egg-agent.log', 'utf8');
+        assert(content.includes('warn12345'));
+        assert(content.includes('info12345'));
         done();
       });
     });

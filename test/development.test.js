@@ -15,7 +15,7 @@ describe('test/development.test.js', () => {
   let app;
 
   before(done => {
-    app = mm.cluster({
+    app = mm.app({
       plugin: 'watcher',
       baseDir: 'apps/watcher-development-app',
     });
