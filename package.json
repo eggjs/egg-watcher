@@ -20,18 +20,18 @@
   },
   "dependencies": {
     "camelcase": "^4.1.0",
-    "sdk-base": "^3.1.1",
+    "sdk-base": "^3.3.0",
     "wt": "^1.1.1"
   },
   "devDependencies": {
-    "autod": "^2.8.0",
-    "egg": "^1.2.0",
-    "egg-bin": "^3.3.2",
-    "egg-ci": "^1.6.0",
-    "egg-mock": "^3.5.0",
-    "eslint": "^3.19.0",
-    "eslint-config-egg": "^3.2.0",
-    "ko-sleep": "^1.0.2",
+    "autod": "^2.10.1",
+    "egg": "next",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.1",
+    "eslint": "^4.10.0",
+    "eslint-config-egg": "^5.1.1",
+    "ko-sleep": "^1.0.3",
     "pedding": "^1.1.0",
     "supertest": "^3.0.0"
   },
@@ -47,9 +47,9 @@
     "watch"
   ],
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 8.0.0"
   },
   "ci": {
-    "version": "6, 7, 8"
+    "version": "8, 9"
   }
 }

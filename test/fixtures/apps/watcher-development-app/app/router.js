@@ -12,41 +12,41 @@ module.exports = function(app) {
     fileChangeCount++;
   }
 
-  app.get('/app-watch', function*() {
+  app.get('/app-watch', async ctx => {
     app.watcher.watch([file_path1, dir_path], callback);
-    this.body = 'app watch success';
+    ctx.body = 'app watch success';
   });
 
-  app.get('/app-unwatch', function*() {
+  app.get('/app-unwatch', async ctx => {
     app.watcher.unwatch([file_path1, dir_path], callback);
-    this.body = 'app unwatch success';
+    ctx.body = 'app unwatch success';
   });
 
-  app.get('/app-msg', function*() {
-    this.body = fileChangeCount;
+  app.get('/app-msg', async ctx => {
+    ctx.body = fileChangeCount;
   });
 
-  app.get('/agent-watch', function*() {
+  app.get('/agent-watch', async ctx => {
     app.messenger.broadcast('agent-watch');
-    this.body = yield new Promise(function(resolve) {
+    ctx.body = await new Promise(function(resolve) {
       app.messenger.on('agent-watch-success', function(msg) {
         resolve(msg);
       });
     });
   });
 
-  app.get('/agent-unwatch', function*() {
+  app.get('/agent-unwatch', async ctx => {
     app.messenger.broadcast('agent-unwatch');
-    this.body = yield new Promise(function(resolve) {
+    ctx.body = await new Promise(function(resolve) {
       app.messenger.on('agent-unwatch-success', function(msg) {
         resolve(msg);
       });
     });
   });
 
-  app.get('/agent-msg', function*() {
+  app.get('/agent-msg', async ctx => {
     app.messenger.broadcast('i-want-agent-file-changed-count');
-    this.body = yield new Promise(function(resolve) {
+    ctx.body = await new Promise(function(resolve) {
       app.messenger.on('agent-file-changed-count', function(msg) {
         resolve(msg);
       });
