@@ -1,4 +1,10 @@
 
+3.0.0 / 2017-11-10
+==================
+
+**others**
+  * [[`c1d8460`](http://github.com/eggjs/egg-watcher/commit/c1d846066f1d12ace466bf486412930e789d2e92)] - refactor: use async function and support egg@2 (#10) (Yiyu He <<dead_horse@qq.com>>)
+
 2.2.0 / 2017-09-08
 ==================
 
