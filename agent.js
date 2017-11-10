@@ -12,8 +12,8 @@ module.exports = agent => {
     .on('warn', logger.warn.bind(logger))
     .on('error', logger.error.bind(logger));
 
-  agent.beforeStart(function* () {
-    yield watcher.ready();
+  agent.beforeStart(async () => {
+    await watcher.ready();
     logger.info('[egg-watcher:agent] watcher start success');
   });
 };
