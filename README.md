@@ -66,6 +66,7 @@ Firstly define our custom event source like this:
 ```js
 // {plugin_root}/lib/custom_event_source.js
 const Base = require('sdk-base');
+
 class CustomEventSource extends Base {
   // `opts` comes from app.config[${eventSourceName}]
   // `eventSourceName` will be registered later in
@@ -132,4 +133,3 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 ## License
 
 [MIT](https://github.com/eggjs/egg-watcher/blob/master/LICENSE)
-
