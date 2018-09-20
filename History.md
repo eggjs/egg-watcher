@@ -1,4 +1,10 @@
 
+3.1.0 / 2018-09-20
+==================
+
+**others**
+  * [[`0c5269a`](http://github.com/eggjs/egg-watcher/commit/0c5269ad940002ecb442900d4fa285c8d45e014e)] - refactor: reduce same logic codes and add more log (#11) (fengmk2 <<fengmk2@gmail.com>>)
+
 3.0.0 / 2017-11-10
 ==================
 
