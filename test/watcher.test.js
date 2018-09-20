@@ -10,12 +10,12 @@ describe('test/watcher.test.js', () => {
 
   afterEach(() => app && app.close());
 
-  it('should warn user if config.watcher.type is default', function* () {
+  it('should warn user if config.watcher.type is default', async () => {
     app = mm.app({
       plugin: 'watcher',
       baseDir: 'apps/watcher-type-default',
     });
-    yield app.ready();
+    await app.ready();
     const content = fs.readFileSync(__dirname + '/fixtures/apps/watcher-type-default/logs/watcher-type-default/egg-agent.log', 'utf8');
     assert(content.includes('defaultEventSource watcher will NOT take effect'));
   });
@@ -38,8 +38,8 @@ describe('test/watcher.test.js', () => {
         assert(content.includes('info12345'));
         /*
         // TODO wait unsubscribe implementaion in cluster-client
-        co(function* () {
-          yield app.watcher.unwatch('xxxx');
+        co(async () => {
+          await app.watcher.unwatch('xxxx');
         })
         .then(done)
         .catch(e => done(e));
