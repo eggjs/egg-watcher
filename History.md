@@ -1,4 +1,13 @@
 
+3.1.1 / 2020-03-26
+==================
+
+**fixes**
+  * [[`9ab2eed`](http://github.com/eggjs/egg-watcher/commit/9ab2eed055d4a036cc2926780d5d8107e37523b2)] - fix: spell error on watcher.js (#13) (zoomdong <<1344492820@qq.com>>)
+
+**others**
+  * [[`ffd3720`](http://github.com/eggjs/egg-watcher/commit/ffd3720e03c94eec20f8f755a01978a0eee70814)] - chore: update travis (TZ | 天猪 <<atian25@qq.com>>)
+
 3.1.0 / 2018-09-20
 ==================
 
