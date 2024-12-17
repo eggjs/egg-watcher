@@ -1,38 +1,24 @@
 {
-  "name": "egg-watcher",
+  "name": "@eggjs/watcher",
   "version": "3.1.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "file watcher plugin for egg",
   "eggPlugin": {
-    "name": "watcher"
+    "name": "watcher",
+    "exports": {
+      "import": "./dist/esm",
+      "require": "./dist/commonjs"
+    }
   },
-  "files": [
-    "app.js",
-    "agent.js",
-    "config",
-    "lib"
-  ],
   "scripts": {
-    "lint": "eslint --ext js . --fix",
+    "lint": "eslint --cache src test --ext .ts",
+    "pretest": "npm run lint -- --fix && npm run prepublishOnly",
     "test": "egg-bin test",
-    "cov": "egg-bin cov",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
-  },
-  "dependencies": {
-    "camelcase": "^5.0.0",
-    "sdk-base": "^3.5.0",
-    "wt": "^1.2.0"
-  },
-  "devDependencies": {
-    "autod": "^3.0.1",
-    "egg": "^2.11.2",
-    "egg-bin": "^4.9.0",
-    "egg-ci": "^1.8.0",
-    "egg-mock": "^3.20.1",
-    "eslint": "^5.6.0",
-    "eslint-config-egg": "^7.1.0",
-    "mz-modules": "^2.1.0",
-    "pedding": "^1.1.0"
+    "preci": "npm run lint && npm run prepublishOnly && attw --pack",
+    "ci": "egg-bin cov",
+    "prepublishOnly": "tshy && tshy-after"
   },
   "homepage": "https://github.com/eggjs/egg-watcher",
   "repository": {
@@ -46,12 +32,51 @@
     "watch"
   ],
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 18.19.0"
   },
-  "ci": {
-    "version": "8, 10",
-    "license": {
-      "year": 2016
+  "dependencies": {
+    "camelcase": "^5.0.0",
+    "sdk-base": "^4.2.1",
+    "wt": "^1.2.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.1",
+    "@eggjs/tsconfig": "1",
+    "@types/node": "22",
+    "@types/mocha": "10",
+    "egg": "beta",
+    "egg-bin": "beta",
+    "egg-mock": "beta",
+    "eslint": "8",
+    "eslint-config-egg": "14",
+    "tshy": "3",
+    "tshy-after": "1",
+    "typescript": "5"
+  },
+  "type": "module",
+  "tshy": {
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json"
     }
-  }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "types": "./dist/commonjs/index.d.ts",
+  "main": "./dist/commonjs/index.js"
 }
