@@ -7,14 +7,14 @@
 [![npm download][download-image]][download-url]
 [![Node.js Version](https://img.shields.io/node/v/@eggjs/watcher.svg?style=flat)](https://nodejs.org/en/download/)
 
-[npm-image]: https://img.shields.io/npm/v/egg-watcher.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-watcher
+[npm-image]: https://img.shields.io/npm/v/@eggjs/watcher.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@eggjs/watcher
 [codecov-image]: https://codecov.io/github/eggjs/egg-watcher/coverage.svg?branch=master
 [codecov-url]: https://codecov.io/github/eggjs/egg-watcher?branch=master
-[snyk-image]: https://snyk.io/test/npm/egg-watcher/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-watcher
-[download-image]: https://img.shields.io/npm/dm/egg-watcher.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-watcher
+[snyk-image]: https://snyk.io/test/npm/@eggjs/watcher/badge.svg?style=flat-square
+[snyk-url]: https://snyk.io/test/npm/@eggjs/watcher
+[download-image]: https://img.shields.io/npm/dm/@eggjs/watcher.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@eggjs/watcher
 
 File watcher plugin for egg
 
