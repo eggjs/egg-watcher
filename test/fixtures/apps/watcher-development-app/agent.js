@@ -1,8 +1,7 @@
-'use strict';
+const path = require('node:path');
 
-const utils = require('../../../utils');
-const file_path1 = utils.getFilePath('apps/watcher-development-app/tmp-agent.txt');
-const dir_path = utils.getFilePath('apps/watcher-development-app/tmp-agent');
+const file_path1 = path.join(__dirname, 'tmp-agent.txt');
+const dir_path = path.join(__dirname, 'tmp-agent');
 
 module.exports = function(agent) {
   let count = 0;

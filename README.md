@@ -1,37 +1,36 @@
-# egg-watcher
-File watcher plugin for egg
+# @eggjs/watcher
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![Node.js CI](https://github.com/eggjs/egg-watcher/actions/workflows/nodejs.yml/badge.svg)](https://github.com/eggjs/egg-watcher/actions/workflows/nodejs.yml)
 [![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
+[![Node.js Version](https://img.shields.io/node/v/@eggjs/watcher.svg?style=flat)](https://nodejs.org/en/download/)
 
 [npm-image]: https://img.shields.io/npm/v/egg-watcher.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-watcher
-[travis-image]: https://img.shields.io/travis/eggjs/egg-watcher.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-watcher
 [codecov-image]: https://codecov.io/github/eggjs/egg-watcher/coverage.svg?branch=master
 [codecov-url]: https://codecov.io/github/eggjs/egg-watcher?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-watcher.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-watcher
 [snyk-image]: https://snyk.io/test/npm/egg-watcher/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-watcher
 [download-image]: https://img.shields.io/npm/dm/egg-watcher.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-watcher
+
+File watcher plugin for egg
 
 ## Usage
 
 In worker process:
 
 ### app.watcher.watch(path, listener)
+
 Start watching file(s).
 
 - path(String|Array): file path(s)
 - listener(Function): file change callback
 
 ### app.watcher.unwatch(path[, listener])
+
 Stop watching file(s).
 
 - path(String|Array): file path(s)
@@ -40,12 +39,14 @@ Stop watching file(s).
 In agent process:
 
 ### agent.watcher.watch(path, listener)
+
 Start watching file(s).
 
 - path(String|Array): file path(s)
 - listener(Function): file change callback
 
 ### agent.watcher.unwatch(path[, listener])
+
 Stop watching file(s).
 
 - path(String|Array): file path(s)
@@ -55,7 +56,7 @@ Stop watching file(s).
 
 ### `development` Mode
 
-There's a built-in [development mode](https://github.com/eggjs/egg-watcher/blob/master/lib/event-sources/development.js) which works in local(env is `local`). Once files on disk is modified it will emit a `change` event immediately.
+There's a built-in [development mode](https://github.com/eggjs/egg-watcher/blob/master/src/lib/event-sources/development.ts) which works in local(env is `local`). Once files on disk is modified it will emit a `change` event immediately.
 
 ### Customize Watching Mode
 
@@ -63,11 +64,11 @@ Say we want to build a custom event source plugin (package name: `egg-watcher-cu
 
 Firstly define our custom event source like this:
 
-```js
+```ts
 // {plugin_root}/lib/custom_event_source.js
-const Base = require('sdk-base');
+import { Base } from 'sdk-base';
 
-class CustomEventSource extends Base {
+export default class CustomEventSource extends Base {
   // `opts` comes from app.config[${eventSourceName}]
   // `eventSourceName` will be registered later in
   // `config.watcher.eventSources` as the key shown below
@@ -93,8 +94,6 @@ class CustomEventSource extends Base {
     }
   }
 }
-
-module.exports = CustomEventSource;
 ```
 
 Event source implementations varies according to your running environment. When working with vagrant, docker, samba or such other non-standard way of development, you should use a different watch API specific to what you are working with.
@@ -102,10 +101,14 @@ Event source implementations varies according to your running environment. When 
 Then add your custom event source to config:
 
 ```js
-// config.default.js
-exports.watcher = {
-  eventSources: {
-    custom: require('../lib/custom_event_source'),
+// config/config.default.js
+import CustomEventSource from '../lib/custom_event_source';
+
+export default {
+  watcher: {
+    eventSources: {
+      custom: CustomEventSource,
+    },
   },
 };
 ```
@@ -113,14 +116,17 @@ exports.watcher = {
 Choose to use your custom watching mode in your desired env.
 
 ```js
-// config.${env}.js
-exports.watcher = {
-  type: 'custom',
-};
+// config/config.${env}.js
 
-// this will pass to your CustomEventSource constructor as opts
-exports.watcherCustom = {
-  // foo: 'bar',
+export default {
+  watcher: {
+    type: 'custom',
+  },
+
+  // this will pass to your CustomEventSource constructor as opts
+  watcherCustom: {
+    // foo: 'bar',
+  },
 };
 ```
 
@@ -132,4 +138,10 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 
 ## License
 
-[MIT](https://github.com/eggjs/egg-watcher/blob/master/LICENSE)
+[MIT](LICENSE)
+
+## Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=eggjs/egg-watcher)](https://github.com/eggjs/egg-watcher/graphs/contributors)
+
+Made with [contributors-img](https://contrib.rocks).

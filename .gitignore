@@ -5,3 +5,7 @@ coverage/
 .DS_Store
 run/
 .vscode
+package-lock.json
+.tshy*
+.eslintcache
+dist
