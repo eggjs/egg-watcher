@@ -64,11 +64,11 @@ Say we want to build a custom event source plugin (package name: `egg-watcher-cu
 
 Firstly define our custom event source like this:
 
-```js
+```ts
 // {plugin_root}/lib/custom_event_source.js
-const Base = require('sdk-base');
+import { Base } from 'sdk-base';
 
-class CustomEventSource extends Base {
+export default class CustomEventSource extends Base {
   // `opts` comes from app.config[${eventSourceName}]
   // `eventSourceName` will be registered later in
   // `config.watcher.eventSources` as the key shown below
@@ -94,8 +94,6 @@ class CustomEventSource extends Base {
     }
   }
 }
-
-module.exports = CustomEventSource;
 ```
 
 Event source implementations varies according to your running environment. When working with vagrant, docker, samba or such other non-standard way of development, you should use a different watch API specific to what you are working with.
@@ -104,9 +102,13 @@ Then add your custom event source to config:
 
 ```js
 // config/config.default.js
-exports.watcher = {
-  eventSources: {
-    custom: require('../lib/custom_event_source'),
+import CustomEventSource from '../lib/custom_event_source';
+
+export default {
+  watcher: {
+    eventSources: {
+      custom: CustomEventSource,
+    },
   },
 };
 ```
@@ -115,13 +117,16 @@ Choose to use your custom watching mode in your desired env.
 
 ```js
 // config/config.${env}.js
-exports.watcher = {
-  type: 'custom',
-};
 
-// this will pass to your CustomEventSource constructor as opts
-exports.watcherCustom = {
-  // foo: 'bar',
+export default {
+  watcher: {
+    type: 'custom',
+  },
+
+  // this will pass to your CustomEventSource constructor as opts
+  watcherCustom: {
+    // foo: 'bar',
+  },
 };
 ```
 

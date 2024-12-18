@@ -35,9 +35,9 @@
     "node": ">= 18.19.0"
   },
   "dependencies": {
+    "@eggjs/utils": "^4.0.3",
     "camelcase": "^5.0.0",
-    "sdk-base": "^4.2.1",
-    "wt": "^1.2.0"
+    "sdk-base": "^5.0.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.17.1",
@@ -78,5 +78,6 @@
     "src"
   ],
   "types": "./dist/commonjs/index.d.ts",
-  "main": "./dist/commonjs/index.js"
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/esm/index.js"
 }
