@@ -24,9 +24,15 @@ export default class DevelopmentEventSource extends BaseEventSource {
       }
       debug('watch %o, isFile: %o', file, stat.isFile());
       // https://nodejs.org/docs/latest/api/fs.html#fswatchfilename-options-listener
+      let recursive = true;
+      if (process.platform === 'linux' && process.version.startsWith('v18.')) {
+        // https://github.com/fgnass/filewatcher/pull/6
+        // disable recursive on linux + Node.js <= 18
+        recursive = false;
+      }
       const handler = fs.watch(file, {
         persistent: true,
-        recursive: true,
+        recursive,
       }, (event, filename) => {
         debug('watch %o => event: %o, filename: %o', file, event, filename);
         let changePath = file;
