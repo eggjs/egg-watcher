@@ -42,7 +42,7 @@ describe('test/development_cluster.test.ts', () => {
 
     let lastCount = count;
     count = parseInt(res.text);
-    assert(count > lastCount);
+    assert(count > lastCount, `count: ${count}, lastCount: ${lastCount}`);
 
     fs.writeFileSync(file_path2, 'aaa');
     fs.writeFileSync(file_path3, 'aaa');
@@ -57,8 +57,7 @@ describe('test/development_cluster.test.ts', () => {
 
     lastCount = count;
     count = parseInt(res.text);
-    assert(count > lastCount);
-    // console.error('count', count);
+    assert(count > lastCount, `count: ${count}, lastCount: ${lastCount}`);
 
     /*
     // TODO wait unsubscribe implementation of cluster-client
@@ -100,7 +99,7 @@ describe('test/development_cluster.test.ts', () => {
 
     const lastCount = count;
     count = parseInt(res.text);
-    assert(count > lastCount);
+    assert(count > lastCount, `count: ${count}, lastCount: ${lastCount}`);
 
     /*
     // TODO wait unsubscribe implementation of cluster-client
