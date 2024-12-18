@@ -1,3 +1,52 @@
+# Changelog
+
+## [4.0.0](https://github.com/eggjs/egg-watcher/compare/v3.1.1...v4.0.0) (2024-12-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node.js < 18.19.0 support
+
+part of https://github.com/eggjs/egg/issues/3644
+
+https://github.com/eggjs/egg/issues/5257
+
+<!-- This is an auto-generated comment: release notes by coderabbit.ai
+-->
+
+## Summary by CodeRabbit
+
+- **New Features**
+- Introduced new configuration files for managing watcher settings in
+different environments (default, local, unittest).
+- Added a new `Boot` class to manage application lifecycle and watcher
+initialization.
+- Implemented `Watcher` class for monitoring file changes with event
+handling.
+- Added `DevelopmentEventSource` and `DefaultEventSource` classes for
+specific event source management.
+
+- **Bug Fixes**
+- Enhanced path handling in various modules to ensure correct file
+watching functionality.
+
+- **Documentation**
+	- Updated `README.md` with project name change and improved structure.
+
+- **Tests**
+- Introduced new unit tests for watcher functionality and refactored
+existing test files to improve clarity and structure.
+
+- **Chores**
+- Removed deprecated configuration files and streamlined project
+structure.
+	- Updated TypeScript configuration for stricter type-checking.
+
+<!-- end of auto-generated comment: release notes by coderabbit.ai -->
+
+### Features
+
+* support cjs and esm both by tshy ([#14](https://github.com/eggjs/egg-watcher/issues/14)) ([c80fea0](https://github.com/eggjs/egg-watcher/commit/c80fea0327a664edfd03bdc2e08757305e28ad32))
 
 3.1.1 / 2020-03-26
 ==================
