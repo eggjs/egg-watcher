@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/eggjs/watcher/compare/v4.0.0...v4.0.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* import event source only default export ([#15](https://github.com/eggjs/watcher/issues/15)) ([5c52c49](https://github.com/eggjs/watcher/commit/5c52c49c1347da194eb00844335642b1a1f73af8))
+
 ## [4.0.0](https://github.com/eggjs/egg-watcher/compare/v3.1.1...v4.0.0) (2024-12-18)
 
 
