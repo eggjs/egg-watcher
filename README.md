@@ -1,7 +1,7 @@
 # @eggjs/watcher
 
 [![NPM version][npm-image]][npm-url]
-[![Node.js CI](https://github.com/eggjs/egg-watcher/actions/workflows/nodejs.yml/badge.svg)](https://github.com/eggjs/egg-watcher/actions/workflows/nodejs.yml)
+[![Node.js CI](https://github.com/eggjs/watcher/actions/workflows/nodejs.yml/badge.svg)](https://github.com/eggjs/watcher/actions/workflows/nodejs.yml)
 [![Test coverage][codecov-image]][codecov-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
@@ -9,8 +9,8 @@
 
 [npm-image]: https://img.shields.io/npm/v/@eggjs/watcher.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/@eggjs/watcher
-[codecov-image]: https://codecov.io/github/eggjs/egg-watcher/coverage.svg?branch=master
-[codecov-url]: https://codecov.io/github/eggjs/egg-watcher?branch=master
+[codecov-image]: https://codecov.io/github/eggjs/watcher/coverage.svg?branch=master
+[codecov-url]: https://codecov.io/github/eggjs/watcher?branch=master
 [snyk-image]: https://snyk.io/test/npm/@eggjs/watcher/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/@eggjs/watcher
 [download-image]: https://img.shields.io/npm/dm/@eggjs/watcher.svg?style=flat-square
@@ -56,7 +56,7 @@ Stop watching file(s).
 
 ### `development` Mode
 
-There's a built-in [development mode](https://github.com/eggjs/egg-watcher/blob/master/src/lib/event-sources/development.ts) which works in local(env is `local`). Once files on disk is modified it will emit a `change` event immediately.
+There's a built-in [development mode](https://github.com/eggjs/watcher/blob/master/src/lib/event-sources/development.ts) which works in local(env is `local`). Once files on disk is modified it will emit a `change` event immediately.
 
 ### Customize Watching Mode
 
@@ -142,6 +142,6 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=eggjs/egg-watcher)](https://github.com/eggjs/egg-watcher/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=eggjs/watcher)](https://github.com/eggjs/watcher/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).
