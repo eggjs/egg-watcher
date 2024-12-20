@@ -25,7 +25,9 @@ export class Watcher extends Base {
     const watcherType = this.#config.watcher.type;
     let EventSource: typeof BaseEventSource = this.#config.watcher.eventSources[watcherType] as any;
     if (typeof EventSource === 'string') {
-      EventSource = await importModule(EventSource);
+      EventSource = await importModule(EventSource, {
+        importDefaultOnly: true,
+      });
     }
 
     // chokidar => watcherChokidar

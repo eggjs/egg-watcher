@@ -20,10 +20,10 @@
     "ci": "egg-bin cov",
     "prepublishOnly": "tshy && tshy-after"
   },
-  "homepage": "https://github.com/eggjs/egg-watcher",
+  "homepage": "https://github.com/eggjs/watcher",
   "repository": {
     "type": "git",
-    "url": "git@github.com:eggjs/egg-watcher.git"
+    "url": "git@github.com:eggjs/watcher.git"
   },
   "keywords": [
     "egg-watcher",
