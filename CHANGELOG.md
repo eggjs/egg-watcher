@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.2](https://github.com/eggjs/watcher/compare/v4.0.1...v4.0.2) (2024-12-20)
+
+
+### Bug Fixes
+
+* should export watcher from EggWatcherApplicationCore ([#16](https://github.com/eggjs/watcher/issues/16)) ([59a1880](https://github.com/eggjs/watcher/commit/59a18804aed5f4fd4aa4fbf65f3044cfb4345dea))
+
 ## [4.0.1](https://github.com/eggjs/watcher/compare/v4.0.0...v4.0.1) (2024-12-20)
 
 
