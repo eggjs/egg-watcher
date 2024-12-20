@@ -1,4 +1,5 @@
 import type { WatchEventType, Stats } from 'node:fs';
+import type { EggApplicationCore, EggAppConfig } from 'egg';
 import type { Watcher } from './watcher.js';
 
 export interface WatcherConfig {
@@ -18,18 +19,8 @@ export interface ChangeInfo {
   path: string;
 }
 
-declare module 'egg' {
-  export interface EggWatcherAgent {
-    watcher: Watcher;
-  }
-  export interface Agent extends EggWatcherAgent {}
-
-  export interface EggWatcherApplication {
-    watcher: Watcher;
-  }
-  export interface Application extends EggWatcherApplication {}
-
-  export interface EggWatcherAppConfig extends WatcherConfig {}
-
-  export interface EggAppConfig extends EggWatcherAppConfig {}
+export interface EggWatcherApplicationCore extends EggApplicationCore {
+  watcher: Watcher;
 }
+
+export type EggWatcherAppConfig = EggAppConfig & WatcherConfig;
